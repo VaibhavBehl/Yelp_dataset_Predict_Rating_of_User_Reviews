@@ -10,4 +10,6 @@ Applied various multiclass classification algorithms and dealt with nuisances li
 Also discovered that F-score is not such a good measure of performance of an algorithm where classes 
 are almost identical(like difference between a 2-3 star review and 3-4 star review). Thus used MAE/MSE as 
 metric while tuning for hyper-parameters and comparing the final results. 
-See the 'Individual_Project_Report.pdf' for more details.
+See the 'Individual_Project_Report.pdf' for more details.  
+
+Dataset Link: https://www.yelp.com/academic_dataset  
