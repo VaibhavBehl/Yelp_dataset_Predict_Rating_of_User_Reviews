@@ -1,0 +1,104 @@
+CMD:
+root\preprocess> svm_multiclass_learn.exe -c 0.1 files/tr_75 files/svm.model
+root\preprocess> svm_multiclass_classify files/feat_train.txt files/svm.model files/svm.predictions
+=COUNTIF(A1:A25,"=4")
+
+--- UNIGRAM(unequal:1 29141,2 23536,3 36447,4 75426,5 85450) ---
+
+==== SVM_multiclass ====
+-ON ALL TRAIN-
+-1, Zero/one-error on test set: 54.59% (113525 correct, 136475 incorrect, 250000 total)
+-0.1, Zero/one-error on test set: 63.71% (90736 correct, 159264 incorrect, 250000 total)
+-0.01, Zero/one-error on test set: 57.11% (107216 correct, 142784 incorrect, 250000 total)
+
+-0.5, Zero/one-error on test set: 62.45% (93886 correct, 156114 incorrect, 250000 total)
+class 1 P=39.5851 R=71.1815 F=50.8768
+class 2 P=14.3359 R=46.8176 F=21.9504
+class 3 P=29.2893 R=33.1852 F=31.1158
+class 4 P=54.9696 R=0.7186 F=1.4187
+class 5 P=63.0769 R=57.9134 F=60.385
+-250000-
+class 1 P=62.77 R=58.582 F=60.6037
+class 2 P=50.5303 R=1.62 F=3.1394
+class 3 P=40.5971 R=9.192 F=14.99
+class 4 P=22.9027 R=16.91 F=19.4553
+class 5 P=30.3573 R=93.194 F=45.7967
+
+(linear_model.SGDClassifier + StratifiedKFold)
+MSE=4.11118
+MAE=1.61958
+class 1 P=20.1535 R=17.0598 F=18.4781
+class 2 P=20.1947 R=27.3955 F=23.2503
+class 3 P=20.3512 R=5.9367 F=9.192
+class 4 P=20.4412 R=28.0048 F=23.6326
+class 5 P=19.9142 R=22.4745 F=21.117
+
+-250000-80/20-
+[dc1-feat_REST.csv]
+MSE=2.16774
+MAE=1.04842
+class 1 P=36.9264 R=84.2894 F=51.3548
+class 2 P=25.8929 R=10.9423 F=15.3835
+class 3 P=33.3333 R=0.0904 F=0.1803
+class 4 P=32.1139 R=72.9595 F=44.5977
+class 5 P=75.0 R=0.1817 F=0.3625
+
+
+
+==== Naive Bayes ====
+-ON ALL TRAIN-
+class 1 P=58.8458 R=70.7903 F=64.2678
+class 2 P=50.6975 R=37.5212 F=43.1253
+class 3 P=54.5602 R=46.2699 F=50.0742
+class 4 P=54.7837 R=68.894 F=61.0339
+class 5 P=73.6703 R=61.8701 F=67.2565
+-250000-
+class 1 P=67.3414 R=72.124 F=69.6507
+class 2 P=55.8158 R=49.464 F=52.4483
+class 3 P=57.2259 R=55.698 F=56.4516
+class 4 P=55.5134 R=57.584 F=56.5297
+class 5 P=69.4956 R=71.732 F=70.5961
+
+-250000-80/20-
+[dc1-feat_REST.csv]
+MSE=0.83404
+MAE=0.55132
+class 1 P=64.4652 R=68.1891 F=66.2749
+class 2 P=48.1198 R=41.8032 F=44.7396
+class 3 P=50.4178 R=50.3064 F=50.362
+class 4 P=49.1492 R=49.6769 F=49.4116
+class 5 P=64.2945 R=68.5639 F=66.3606
+(same as above, but scikit multinomial NB)
+MSE=0.8339
+MAE=0.55118
+class 1 P=64.4463 R=68.1691 F=66.2554
+class 2 P=48.0756 R=41.9224 F=44.7887
+class 3 P=50.4226 R=50.3365 F=50.3795
+class 4 P=49.1995 R=49.7962 F=49.4961
+class 5 P=64.3747 R=68.3116 F=66.2847
+
+==== RF ====
+-250000-
+-75/25random-
+-n_estimators=1-
+class 1 P=39.8073 R=40.2878 F=40.0461
+class 2 P=27.3078 R=26.2555 F=26.7713
+class 3 P=26.2335 R=26.0616 F=26.1473
+class 4 P=27.1515 R=27.1318 F=27.1416
+class 5 P=38.1824 R=39.4785 F=38.8196
+-n_estimators=10-
+class 1 P=47.8215 R=65.8913 F=55.4207
+class 2 P=33.3305 R=31.3566 F=32.3134
+class 3 P=33.2874 R=29.2971 F=31.165
+class 4 P=35.9712 R=31.0158 F=33.3102
+class 5 P=50.6785 R=47.4998 F=49.0377
+
+-250000-80/20-
+[dc1-feat_REST.csv]
+MSE=4.18662
+MAE=1.63826
+class 1 P=19.7114 R=27.3036 F=22.8945
+class 2 P=20.0206 R=19.2632 F=19.6346
+class 3 P=19.7845 R=17.5188 F=18.5828
+class 4 P=20.4135 R=16.9798 F=18.539
+class 5 P=20.0798 R=18.7809 F=19.4086

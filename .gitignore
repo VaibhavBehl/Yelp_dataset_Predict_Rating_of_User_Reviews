@@ -1,0 +1,9 @@
+.idea/*
+/python/.project
+/python/.pydevproject
+__*
+*.csv
+*.json
+*.zip
+*.7z
+mycache_can_delete
